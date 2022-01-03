@@ -60,18 +60,18 @@
 
                                             <!-- Example split danger button -->
                                             <div class="btn-group">
-                                                <button type="button" class="btn btn-sm btn-unique">Accion</button>
+                                                <button type="button" class="btn btn-sm btn-unique">Acción</button>
                                                 <button type="button"
                                                     class="btn btn-sm btn-unique dropdown-toggle dropdown-toggle-split"
                                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     <span class="sr-only">Toggle Dropdown</span>
                                                 </button>
                                                 <div class="dropdown-menu">
-                                                    <a class="dropdown-item" href="#" id="estado">Activo</a>
-                                                    <a class="dropdown-item" href="#">Another action</a>
-                                                    <a class="dropdown-item" href="#">Something else here</a>
+                                                    <?php echo ($value->estado === "Cuenta Activa")?'<a class="dropdown-item estado_usuario" id="'.$value->per_id.'">Desactivar Cuenta</a>':'<a class="dropdown-item estado_usuario" id="'.$value->per_id.'">Activar Cuenta</a>' ?>
+                                                    <a class="dropdown-item" href="#">Reiniciar Cuenta</a>
+                                                    <a class="dropdown-item" href="#">Eliminar</a>
                                                     <div class="dropdown-divider"></div>
-                                                    <a class="dropdown-item" href="#">Separated link</a>
+                                                    <a class="dropdown-item" href="#">Ya veremos que poner</a>
                                                 </div>
                                             </div>
                                         </td>
@@ -114,6 +114,9 @@
 <script type="text/javascript" src="<?php echo base_url("resources/js/Mantenimiento/Persona/index_persona.js") ?>">
 </script>
 
+<script>
+    var url_base = "<?=base_url()?>";
+</script>
 
 </body>
 

@@ -48,4 +48,40 @@ $(document).ready(function () {
 			}
 		});
 	});
+
+	$(document).ready(function () {
+		$(".estado_usuario").on('click', function () {
+			var per_id = $(this).attr("id");	//obtenemos el valor del boton seleccionado
+			$.ajax({
+				url: "Persona/actualizar_estado",
+				type: "POST",
+				data: { id: per_id }
+			})
+			.done(function (data) {
+				if(data){
+					Swal.fire({
+						icon: 'success',
+						text: 'Estado actualizado',
+						showConfirmButton: false,
+						timer: 1500
+					  })
+					  setTimeout(function(){
+						window.location.href = url_base+"Mantenimiento/Persona";//redireccionamos al index de tipo persona
+					}, 1500);
+					  
+				}else{	
+					Swal.fire({
+						icon: 'error',
+						text: 'Error! No puedes modificar tu propia cuenta',
+					  })			
+				}
+            })
+            .fail(function () {
+                console.log("Error ocn el ajax")
+            })
+		})
+	});
+
+
+
 });

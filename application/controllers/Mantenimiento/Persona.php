@@ -41,8 +41,7 @@ class Persona extends Padre
         $segundossdos = rand(10, 99);
         $codigoRamdon = $primerosdos.$segundossdos.$yeard;
 
-        $DateAndTime = date('m-d-Y h:i:s a', time());  
-        
+        $DateAndTime = date('m-d-Y h:i:s a', time());          
         //metodo para agregar personas 
         $data = array(
             "per_id" => 0,
@@ -69,18 +68,31 @@ class Persona extends Padre
                 $existe = false;
             }
         }
-
         if($existe){
             echo false;
         }else{
             $res = $this->Persona_model->guardar_persona($data);
             echo true;
         }
-
-/*          echo "<pre>";
-        print_r($data);  */
-/* 
-        
-        echo $res; */
+    }
+    public function actualizar_estado()
+    {
+        $usuario = $this->session->userdata("per_id");//obtenemos el codigo actual para envitar 
+        $per_id = $this->input->post("id");           // el usuario actual (mas informacion)
+                                                      //en el if
+        if($per_id == $usuario){
+            echo false;
+        }else{
+            $data = array(
+                "per_id_usuario" => $per_id,//le enviamos al id 
+                "opc1" => 0, 
+                "contra_new" => 0,
+                "opc2" => 0, // solo seleccionamos la opcion 2 que actualizar la ultima fecha de conexion
+                "opc3" => 0,
+                "opc4" => 1,
+            );
+            $this->Persona_model->acutalizar_estado($data);
+            echo true;
+        }
     }
 }

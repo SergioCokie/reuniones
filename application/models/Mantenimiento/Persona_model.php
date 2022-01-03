@@ -41,4 +41,17 @@ class Persona_model extends CI_Model
 		$this->db->insert("per_persona", $data);
 		return $this->db->insert_id();
 	}
+    public function acutalizar_estado($data)
+    {
+        try {
+            $sql = "CALL `sp_usuarios`(?,?,?,?,?,?)";
+            $result = $this->db->query($sql,$data); // $data included 3 param and binding & query to db
+            $this->db->close();
+
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+        return $result;    
+    }
+    
 }
