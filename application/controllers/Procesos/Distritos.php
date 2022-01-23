@@ -10,6 +10,7 @@ include (APPPATH."controllers/Padre.php");
         public function index()
         {
             //comentario para ver como se hacen los cambios
+            // de nuevo
             $data["distritos_resumen"] = $this->Procesos_model->getDistritos();
             $data["titulo"] = "Reuniones - Dashboard";
             $this->load->view("Layout/Header", $data);
