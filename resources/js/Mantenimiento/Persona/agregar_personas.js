@@ -11,7 +11,7 @@ $(document).ready(function () {
             url: formAgregar.attr('action'),
             data: formAgregar.serialize(),
             success: function (data) {
-                //console.log(data);
+                console.log(data);
 
                 if(data){
                     Swal.fire({

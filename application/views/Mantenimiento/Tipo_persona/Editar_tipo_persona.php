@@ -83,7 +83,7 @@
     						<!--Grid column-->
     					</div>
     					<!--Grid row-->
-    					<button type="submit" class="btn btn-outline-default waves-effect">Agregar</button>
+    					<button type="submit" class="btn btn-outline-default waves-effect">Editar</button>
     				</form>
     			</div>
     		</section>

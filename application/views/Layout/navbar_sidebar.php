@@ -7,7 +7,7 @@
 			<!-- Logo -->
 			<li class="logo-sn waves-effect">
 				<div class="text-center">
-					<a href="<?=base_url() ?>" class="pl-0">I N I C I O<!-- <img
+					<a href="<?=base_url() ?>dashboard" class="pl-0">I N I C I O<!-- <img
 							src="https://3.bp.blogspot.com/_JaBKyS-71-4/SxmfjuTRyXI/AAAAAAAAAJw/mRIA6guug2w/w1200-h630-p-k-no-nu/LOGO2.1.JPG"
 							class="">< --></a>
 				</div>
@@ -26,15 +26,15 @@
 			<!-- Side navigation links -->
 			<li>
 				<ul class="collapsible collapsible-accordion">
-					<li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-pencil"></i>
-							Mantenimiento<i class="fa fa-angle-down rotate-icon"></i></a>
+					<li><a class="collapsible-header waves-effect arrow-r" title="Mantenimientos"><i class="fa fa-pencil"></i>
+							Mantenimientos<i class="fa fa-angle-down rotate-icon"></i></a>
 						<div class="collapsible-body">
 							<ul>
-								<li><a href="<?= base_url()?>Mantenimiento/Tipo_persona" class="waves-effect">Tipo Persona</a>
+								<li><a href="<?= base_url()?>Mantenimiento/Tipo_persona" title="Gestion de roles" class="waves-effect">Tipo Persona</a>
 								</li>
-								<li><a href="<?= base_url()?>Mantenimiento/Persona" class="waves-effect">Persona</a>
+								<li><a href="<?= base_url()?>Mantenimiento/Persona" title="Gestion de usuarios o personas base" class="waves-effect">Persona</a>
 								</li>
-								<li><a href="#" class="waves-effect">Distrito</a>
+								<li><a href="<?= base_url()?>Mantenimiento/Distrito" class="waves-effect">Distrito</a>
 								</li>
 								<li><a href="#" class="waves-effect">Sector</a>
 								</li>
@@ -117,7 +117,7 @@
 				</a>
 				<div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
 					<a class="dropdown-item" href="<?= base_url()?>Seguridad/Password">Cambiar contraseña</a>
-					<a class="dropdown-item" href="<?= base_url()?>Login/LogOut">Log Out</a>
+					<a class="dropdown-item" href="<?= base_url()?>Login/LogOut">Cerrar sesión</a>
 				</div>
 			</li>
 
