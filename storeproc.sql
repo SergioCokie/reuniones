@@ -34,13 +34,17 @@ BEGIN
             per_actualizacion = 0
             WHERE per_id = per_id_usuario;	
 	elseif opc4 = 1 then /*FUNCIONA BANEAR O DESBANEAR USUARIOS*/
+	
+	SET @v1 := (select per_estado from per_persona where per_id = per_id_usuario);
+	SELECT @v1;
 		UPDATE per_persona 
-			SET per_estado =  if((select per_estado from per_persona where per_id = per_id_usuario) = 1, 0,1)
+			SET per_estado =  if(@v1= 1, 0,1)
             WHERE per_id = per_id_usuario;	
 	end if;
 END$$
 
 DELIMITER ;
 ;
+
 
 

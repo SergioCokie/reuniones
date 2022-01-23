@@ -6,8 +6,8 @@ class Tipo_persona_model extends CI_Model
         parent::__construct();
     }
 
-    public function getTable($codigo = null)
-    {
+    public function getTable($codigo = null,$estado = NULL)
+    {//codigo en especifico y estado si existe o no
         $this->db->select("
         tiper_id,
         tiper_nombre,
@@ -23,7 +23,9 @@ class Tipo_persona_model extends CI_Model
         if($codigo != null){
             $this->db->where('tiper_id',$codigo);
         }
-        $this->db->where('tiper_estado',1);
+        if($estado != null){
+            $this->db->where('tiper_estado', $estado);
+        }
 		$query = $this->db->get();
 		return $query->result();
     }

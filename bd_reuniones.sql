@@ -93,18 +93,18 @@ CREATE TABLE sxr_sectorxreunion(
 	CONSTRAINT fk_sectorxreunion_reunion FOREIGN KEY (sxr_id_reunion) REFERENCES reu_reunion (reu_id)
 );
 /*-----------------------------INSERCIONES PARA TABLA TIPO DE PERSONA-----------------------------------*/
+INSERT INTO tiper_tipo_persona VALUES (NULL,'Desarollador o soporte',1,'Asignado a personas de soporte para el desarollo del sistema ',NOW(),NULL);
 INSERT INTO tiper_tipo_persona VALUES (NULL,'Coordinador','Coordinador de zona',1,NOW(),NULL);
 INSERT INTO tiper_tipo_persona VALUES (NULL,'Pastor','pastor de distrito ',1,NOW(),NULL);
 INSERT INTO tiper_tipo_persona VALUES (NULL,'Supervisor','Supervisor de sector ',1,NOW(),NULL);
 INSERT INTO tiper_tipo_persona VALUES (NULL,'Anfitrion','Anfitrion de reunion ',1,NOW(),NULL);
 INSERT INTO tiper_tipo_persona VALUES (NULL,'Lider','Lider de reunion ',1,NOW(),NULL);
-INSERT INTO tiper_tipo_persona VALUES (NULL,'Desarollador o soporte',1,'Asignado a personas de soporte para el desarollo del sistema ',NOW(),NULL);
 /*-----------------------------------------------------------------------------------------------------*/
 /*-----------------------------------INSERCIONES A TABLA PERSONA--------------------------------------*/
 
-INSERT INTO per_persona VALUES (NULL,'186720','admin',SHA1('admin'),"primer nombre","apellidos ambos","alias",0,1,6,NOW(),NULL,NULL);
-INSERT INTO per_persona VALUES (NULL,'789120','soporte',SHA1('soporte'),"primer nombre1","apellidos ambos1","alias",0,1,6,NOW(),NULL,NULL);
-INSERT INTO per_persona VALUES (NULL,'789120','sergio',SHA1('sergio'),"primer nombre2","apellidos ambos2","alias",0,0,6,NOW(),NULL,NULL);
+INSERT INTO per_persona VALUES (NULL,'186720','admin',SHA1('admin'),"primer nombre","apellidos ambos","alias",0,1,1,NOW(),NULL,NULL);
+INSERT INTO per_persona VALUES (NULL,'789120','soporte',SHA1('soporte'),"primer nombre1","apellidos ambos1","alias",0,1,1,NOW(),NULL,NULL);
+INSERT INTO per_persona VALUES (NULL,'755520','sergio',SHA1('sergio'),"primer nombre2","apellidos ambos2","alias",0,0,1,NOW(),NULL,NULL);
 
 /*-----------------------------------------------------------------------------------------------------*/
 /*-------------------------------INSERCIONES A TABLA DISTRITO-------------------------------------------*/

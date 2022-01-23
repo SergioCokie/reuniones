@@ -9,7 +9,6 @@ class Tipo_persona extends Padre
         $this->load->model("Mantenimiento/Tipo_persona_model");
         $this->load->helper("url");
     }
-
     public function index()
     { //metodo para mostrar vista de index tipo de persona (ahi se encuentran a tabla y mas funcionalidades)
         $data["titulo"] = "Mantenimiento - Tipo de personas";
@@ -17,8 +16,6 @@ class Tipo_persona extends Padre
         $this->load->view("Layout/Header", $data);
         $this->load->view("Layout/navbar_sidebar");
         $this->load->view("Mantenimiento/Tipo_persona/Tipo_persona_index", $data);
-
-        
     }
     public function agregar_tipo_persona()
     { //metodo para mostrar vista de formulario para agregar tipos de persona
@@ -65,7 +62,8 @@ class Tipo_persona extends Padre
             if ($value->per_id_tipo_persona == $tiper_id) {
                 echo false;
                 break;
-            }else{
+            }
+            else {
                 echo true;
                 $this->Tipo_persona_model->eliminar_tiper_persona($tiper_id);
             }
@@ -81,11 +79,12 @@ class Tipo_persona extends Padre
         );
 
         /* print_r($data);
-        echo  $this->input->post("tiper_id") ."dasdasd"; */
-        
+         echo  $this->input->post("tiper_id") ."dasdasd"; */
+
         $res = $this->Tipo_persona_model->editar_tipo_persona($data, array("tiper_id" => $this->input->post("tiper_id")));
         echo $res;
     }
-    
-    
+
+
+
 }

@@ -37,6 +37,11 @@
 <!-- Archivos de agregar personas -->
 <script src="<?php echo base_url("resources/js/Mantenimiento/Persona/agregar_personas.js") ?>"></script>
 
+<script src="https://momentjs.com/downloads/moment-with-locales.min.js"></script>
+
+<!-- Archivos de agregar distritos -->
+<script src="<?php echo base_url("resources/js/Mantenimiento/Distritos/agregar_distrito.js") ?>"></script>
+
 
 <script>
 	// SideNav Initialization
