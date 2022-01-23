@@ -31,8 +31,8 @@ CREATE TABLE dis_distrito(
 	dis_codigo VARCHAR(100),
 	dis_nombre VARCHAR(300),
 	dis_pastor_id_per INT,
-	dis_fecha_creacion DATETIME,
-	dis_fecha_actualizacion DATETIME,
+	dis_fecha_creacion VARCHAR(300),
+	dis_fecha_actualizacion VARCHAR(300),
 
 	CONSTRAINT fk_distrito_persona FOREIGN KEY (dis_pastor_id_per) REFERENCES per_persona(per_id)
 );
@@ -41,8 +41,8 @@ CREATE TABLE zon_zona(
 	zon_codigo VARCHAR(300),
 	zon_nombre VARCHAR(300),
 	zon_coordinador_id_per int,
-	zon_fecha_creacion DATETIME,
-	zon_fecha_actualizacion DATETIME,
+	zon_fecha_creacion VARCHAR(300),
+	zon_fecha_actualizacion VARCHAR(300),
 	CONSTRAINT fk_zona_persona FOREIGN KEY (zon_coordinador_id_per) REFERENCES per_persona(per_id)
 );
 
@@ -59,8 +59,8 @@ CREATE TABLE sec_sector(
 	sec_codigo VARCHAR(300),
 	sec_nombre VARCHAR(300),
 	sec_supervisor_id_per int,
-	sec_fecha_creacion DATETIME,
-	sec_fecha_actualizacion DATETIME,
+	sec_fecha_creacion VARCHAR(300),
+	sec_fecha_actualizacion VARCHAR(300),
 	
 	CONSTRAINT fk_sector_persona FOREIGN KEY (sec_supervisor_id_per) REFERENCES per_persona(per_id)
 );
@@ -78,8 +78,8 @@ CREATE TABLE reu_reunion(
 	reu_nombre VARCHAR(300),
 	reu_lider_id_per int,
 	reu_anfitrion_id_per int,
-	reu_fecha_creacion DATETIME,
-	reu_fecha_actualizacion DATETIME,
+	reu_fecha_creacion VARCHAR(300),
+	reu_fecha_actualizacion VARCHAR(300),
 	
 	CONSTRAINT fk_reunion_lider_persona FOREIGN KEY (reu_lider_id_per) REFERENCES per_persona(per_id),
 	CONSTRAINT fk_reunion_anfitrion_persona FOREIGN KEY (reu_anfitrion_id_per) REFERENCES per_persona(per_id)
@@ -93,18 +93,18 @@ CREATE TABLE sxr_sectorxreunion(
 	CONSTRAINT fk_sectorxreunion_reunion FOREIGN KEY (sxr_id_reunion) REFERENCES reu_reunion (reu_id)
 );
 /*-----------------------------INSERCIONES PARA TABLA TIPO DE PERSONA-----------------------------------*/
+INSERT INTO tiper_tipo_persona VALUES (NULL,'Desarollador o soporte',1,'Asignado a personas de soporte para el desarollo del sistema ',NOW(),NULL);
 INSERT INTO tiper_tipo_persona VALUES (NULL,'Coordinador','Coordinador de zona',1,NOW(),NULL);
 INSERT INTO tiper_tipo_persona VALUES (NULL,'Pastor','pastor de distrito ',1,NOW(),NULL);
 INSERT INTO tiper_tipo_persona VALUES (NULL,'Supervisor','Supervisor de sector ',1,NOW(),NULL);
 INSERT INTO tiper_tipo_persona VALUES (NULL,'Anfitrion','Anfitrion de reunion ',1,NOW(),NULL);
 INSERT INTO tiper_tipo_persona VALUES (NULL,'Lider','Lider de reunion ',1,NOW(),NULL);
-INSERT INTO tiper_tipo_persona VALUES (NULL,'Desarollador o soporte',1,'Asignado a personas de soporte para el desarollo del sistema ',NOW(),NULL);
 /*-----------------------------------------------------------------------------------------------------*/
 /*-----------------------------------INSERCIONES A TABLA PERSONA--------------------------------------*/
 
-INSERT INTO per_persona VALUES (NULL,'186720','admin',SHA1('admin'),"primer nombre","apellidos ambos","alias",0,1,6,NOW(),NULL,NULL);
-INSERT INTO per_persona VALUES (NULL,'789120','soporte',SHA1('soporte'),"primer nombre1","apellidos ambos1","alias",0,1,6,NOW(),NULL,NULL);
-INSERT INTO per_persona VALUES (NULL,'789120','sergio',SHA1('sergio'),"primer nombre2","apellidos ambos2","alias",0,0,6,NOW(),NULL,NULL);
+INSERT INTO per_persona VALUES (NULL,'186720','admin',SHA1('admin'),"primer nombre","apellidos ambos","alias",0,1,1,NOW(),NULL,NULL);
+INSERT INTO per_persona VALUES (NULL,'789120','soporte',SHA1('soporte'),"primer nombre1","apellidos ambos1","alias",0,1,1,NOW(),NULL,NULL);
+INSERT INTO per_persona VALUES (NULL,'755520','sergio',SHA1('sergio'),"primer nombre2","apellidos ambos2","alias",0,0,1,NOW(),NULL,NULL);
 
 /*-----------------------------------------------------------------------------------------------------*/
 /*-------------------------------INSERCIONES A TABLA DISTRITO-------------------------------------------*/
@@ -114,7 +114,7 @@ INSERT INTO dis_distrito VALUES (NULL,'MD05124','DISTRITO 2',2,NOW(),NULL);
 /*----------------------------------INSERCIONES A TABLA ZONA----------------------------------------------*/
 INSERT INTO zon_zona VALUES (NULL,'MD05125','ZONA 1',1,NOW(),NULL);
 INSERT INTO zon_zona VALUES (NULL,'MD05126','ZONA 2',2,NOW(),NULL);
-INSERT INTO zon_zona VALUES (NULL,'MD05126','ZONA 2',1,NOW(),NULL);
+INSERT INTO zon_zona VALUES (NULL,'MD05126','ZONA 3',1,NOW(),NULL);
 
 INSERT INTO zon_zona VALUES (NULL,'MD05125','ZONA 4',1,NOW(),NULL);
 INSERT INTO zon_zona VALUES (NULL,'MD05126','ZONA 5',2,NOW(),NULL);
@@ -146,7 +146,8 @@ SELECT
 SELECT 
 	dis_id,
 	dis_codigo,
-    dis_nombre,
+	dis_nombre,
+	per_username,
     INSERT((SELECT 
                 GROUP_CONCAT(zon_nombre
                         SEPARATOR ', ')
@@ -158,6 +159,43 @@ SELECT
                 dxz_id_distrito = dis_id),
         0,
         0,
+        '') AS ZONAS,
+			 INSERT((SELECT 
+                GROUP_CONCAT(zon_Id
+                        SEPARATOR ', ')
+            FROM
+                zon_zona
+                    INNER JOIN
+                dxz_distritoxzona ON dxz_id_zona = zon_id
+            WHERE
+                dxz_id_distrito = dis_id),
+        0,
+        0,
         '') AS ZONAS
 FROM
-    dis_distrito;
+    dis_distrito
+INNER JOIN per_persona ON per_id = dis_pastor_id_per
+
+
+
+
+SELECT 
+	zon_id,
+	zon_nombre,
+    INSERT((SELECT 
+                GROUP_CONCAT(sec_nombre
+                        SEPARATOR ', ')
+            FROM
+                sec_sector
+                    INNER JOIN
+                zxs_zonaxsector ON zxs_id_sector = sec_id
+            WHERE
+                zxs_id_zona = zon_id),
+        0,
+        0,
+        '') AS sectores
+FROM
+    zon_zona
+WHERE zon_id IN (1,2,3);
+
+SELECT `zon_id`, `zon_nombre`, INSERT((SELECT GROUP_CONCAT(sec_nombre SEPARATOR ', ') FROM sec_sector INNER JOIN zxs_zonaxsector ON zxs_id_sector = sec_id WHERE zxs_id_zona = zon_id), 0, 0, '') AS sectores FROM `zon_zona` WHERE zon_id IN (4, 5)

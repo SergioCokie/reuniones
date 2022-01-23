@@ -42,7 +42,21 @@
 										<td><?= $value->tiper_fecha_creacion ?></td>
 										<td><?= $value->tiper_fecha_actualizacion ?></td>
 										<td>
-											<div class="row">
+
+										<div class="btn-group">
+                                                <button type="button" class="btn btn-sm btn-unique">Acción</button>
+                                                <button type="button"
+                                                    class="btn btn-sm btn-unique dropdown-toggle dropdown-toggle-split"
+                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <span class="sr-only">Toggle Dropdown</span>
+                                                </button>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item" href="<?=base_url() ?>Mantenimiento/Tipo_persona/editar_tipo_persona?id=<?=$value->tiper_id  ?>">Editar</a>
+                                                    <a class="dropdown-item delete_tiper_per" id='<?= $value->tiper_id ?>'>Eliminar</a>
+                                                    
+                                                </div>
+                                            </div>
+											<!-- <div class="row">
 												<div class="col-6">
 													<a href="<?=base_url() ?>Mantenimiento/Tipo_persona/editar_tipo_persona?id=<?=$value->tiper_id  ?>"
 														type="button" class="btn btn-sm btn-unique">Edit</a>
@@ -53,9 +67,9 @@
 											<div class="row">
 												<div class="col-6">
 													<a class="btn btn-sm btn-elegant delete_tiper_per"
-														id='<?= $value->tiper_id ?>'>Delet</a>
+														>Delet</a>
 												</div>
-											</div>
+											</div> -->
 										</td>
 									</tr>
 									<?php

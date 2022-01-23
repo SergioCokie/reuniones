@@ -30,16 +30,6 @@
                             </div>
                             <!--/Grid column-->
 
-                            <!--Grid column-->
-                            <!-- <div class="col-md-4 mb-4">
-                                <div class="md-form">
-                                    <input placeholder="Selected date" type="text" id="date-picker-example"
-                                        class="form-control datepicker" name="tiper_fecha_creacion"
-                                        data-validetta="required">
-                                    <label for="date-picker-example" class="active">Fecha Creacion</label>
-                                </div>
-                            </div> -->
-                            <!--/Grid column-->
                         </div>
                         <!--Grid row-->
 
@@ -71,8 +61,8 @@
                         <!--Grid row-->
                         <div class="row d-flex justify-content-center">
                             <div class="col-md-4 mb-4">
-                                <select class="mdb-select" name="per_id_tipo_persona" aria-placeholder="Rol" id="per_id_tipo_persona"
-                                    data-validetta="required">
+                                <select class="mdb-select" name="per_id_tipo_persona" aria-placeholder="Rol" id="per_id_tipo_persona" data-validetta="required">
+                                    <option option value="">Seleccione rol</option>
                                     <?php
 										foreach ($datos_tipo_persona as $key => $value) {									
 									?>
@@ -89,7 +79,8 @@
 							<div class="col-md-4 mb-4">
                                 <select class="mdb-select" name="per_estado" aria-placeholder="estado" id="estado"
                                     data-validetta="required">
-                                    
+
+                                    <option option value="">Estado del usuario actual</option>
                                     <option option value="1">Activo</option>
                                     <option option value="0" style="color:#ff0000">Inactivo</option>
 

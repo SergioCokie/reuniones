@@ -6,7 +6,7 @@ class Persona_model extends CI_Model
         parent::__construct();
     }
 
-    public function getTable($codigo = null)
+    public function getTable($codigo = null, $tipo_per = NULL)
     {
         $this->db->select("
         per_id,
@@ -16,6 +16,7 @@ class Persona_model extends CI_Model
         per_lastName,
         per_alias,
         tiper_nombre,
+        tiper_id,
         if(per_estado=1,'Cuenta Activa','Cuenta Inactiva') as estado,
         per_estado,
         per_fecha_creacion,
@@ -32,6 +33,10 @@ class Persona_model extends CI_Model
         $this->db->join("tiper_tipo_persona","per_id_tipo_persona = tiper_id");
         if($codigo != null){
             $this->db->where('per_id',$codigo);
+        }
+        if($tipo_per != null){
+            $this->db->where('tiper_id',$tipo_per);
+            $this->db->where('per_estado', "1");
         }
 		$query = $this->db->get();
 		return $query->result();
@@ -53,5 +58,10 @@ class Persona_model extends CI_Model
         }
         return $result;    
     }
+    public function editar_rol_usuario($data, $where)
+	{
+		$this->db->update('per_persona', $data, $where);
+		return $this->db->affected_rows();
+	}
     
 }

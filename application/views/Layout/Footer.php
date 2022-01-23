@@ -1,5 +1,3 @@
-
-
 <!--  SCRIPTS  -->
 <!--       
        	__(.)< (MEOW)
@@ -18,11 +16,18 @@
 <script src="<?php echo base_url("resources/validetta/validettaLang-es-ES.js")?>"></script>
 <!-- SweetAlert2 -->
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- Obtener la hora local -->
+<script src="https://momentjs.com/downloads/moment-with-locales.min.js"></script>
 <!--Initializations-->
 
 <script>
-	console.debug("Si tu no sabes lo que estas haciendo no deberias tocar nada, si sabes lo que estas haciendo deberias ayudarme :D")
+console.debug(
+    "Si tu no sabes lo que estas haciendo no deberias tocar nada, si sabes lo que estas haciendo deberias ayudarme :D"
+    )
 </script>
+
+<!-- Dashboard -->
+<script src="<?php echo base_url("resources/js/Procesos/Distritos.js") ?>"></script>
 
 <!-- Archivo js de Seguridad/index_seguridad -->
 <script src="<?php echo base_url("resources/js/Seguridad/Cambiar_contra.js")?>"></script>
@@ -38,16 +43,28 @@
 <script src="<?php echo base_url("resources/js/Mantenimiento/Persona/agregar_personas.js") ?>"></script>
 
 
-<script>
-	// SideNav Initialization
-	$(".button-collapse").sideNav();//sidebar
-	$('.datepicker').pickadate();//datepiker (input con calendario)
+<!-- Archivos de agregar distritos -->
+<script src="<?php echo base_url("resources/js/Mantenimiento/Distritos/agregar_distrito.js") ?>"></script>
 
-	// Material Select Initialization
-	$(document).ready(function () {
-            $('.mdb-select').material_select();
-    });
-	var url_base = "<?= base_url(); ?>"
+<!-- DataTables.net -->
+<script type="text/javascript"
+    src="<?php echo base_url("resources/js/vendor/datatables/js/jquery.dataTables.min.js") ?>"></script>
+<script type="text/javascript"
+    src="<?php echo base_url("resources/js/vendor/datatables/js/dataTables.bootstrap4.min.js") ?>"></script>
+
+
+<script>
+// SideNav Initialization
+$(".button-collapse").sideNav(); //sidebar
+$('.datepicker').pickadate(); //datepiker (input con calendario)
+
+
+
+// Material Select Initialization
+$(document).ready(function() {
+    $('.mdb-select').material_select();
+});
+var url_base = "<?= base_url(); ?>"
 </script>
 
 
